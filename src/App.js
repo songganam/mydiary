@@ -1,61 +1,27 @@
-import styled from "@emotion/styled";
+import { Route, Routes } from "react-router";
+import Index from "./pages/Index";
+import Intro from "./pages/Intro";
+import DiaryAdd from "./pages/diary/DiaryAdd";
+import DiaryEdit from "./pages/diary/DiaryEdit";
+import DiaryIndex from "./pages/diary/Index";
 import "./styles/App.css";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
 
 function App() {
-  const TopBar = styled.header`
-    display: flex;
-    width: 100%;
-    height: 64px;
-    padding: 8px 4px;
-    align-items: center;
-    justify-content: space-between;
-    gap: 6px;
-    flex-shrink: 0;
-    background: #fef7ff;
-
-    h2 {
-      font-weight: 400;
-    }
-
-    button {
-      display: flex;
-      width: 48px;
-      height: 48px;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
-
-      border: none;
-      background-color: transparent;
-      cursor: pointer;
-    }
-  `;
-
-  const Contents = styled.main`
-    width: 100%;
-    min-height: 500px;
-  `;
-
-  const BotBar = styled.footer`
-    display: flex;
-    width: 100%;
-    height: 80px;
-    padding: 0px 16px 0px 4px;
-    align-items: center;
-    gap: 276px;
-    flex-shrink: 0;
-  `;
-
   return (
     <div className="layout">
       <div className="wrap">
-        <Header></Header>
-        <Contents>중심컨텐츠</Contents>
-        <Footer></Footer>
+        <Routes>
+          <Route path="/" element={<Intro />}></Route>
+          <Route path="/home" element={<Index />}></Route>
+          <Route path="/diary" element={<DiaryIndex />}></Route>
+          <Route path="/diary/add" element={<DiaryAdd />}></Route>
+          <Route path="/diary/edit/:pk" element={<DiaryEdit />}></Route>
+        </Routes>
+        {/* <Intro></Intro>
+        <Index></Index>
+        <DiaryIndex></DiaryIndex>
+        <DiaryAdd></DiaryAdd>
+        <DiaryEdit></DiaryEdit> */}
       </div>
     </div>
   );
